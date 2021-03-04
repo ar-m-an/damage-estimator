@@ -68,6 +68,8 @@ class App extends Component {
         return this._renderStep2Form();
       case 3:
         return this._renderStep3Form();
+      case 4:
+        return this._renderFinishMessage();
       default:
         return null;
     }
@@ -268,6 +270,15 @@ class App extends Component {
 
       </div>
     );
+  }
+
+  _renderFinishMessage() {
+    return (
+      <div style={{ textAlign: "center" }}>
+        <h1>You're done!</h1>
+        <h3>Your report will be ready soon.</h3>
+      </div>
+  )
   }
 }
 
