@@ -11,7 +11,7 @@ import {
   Paper,
   Select, Slider,
   TableContainer, Table, TableHead, TableRow, TableCell, TableBody,
-  TextField, Typography
+  TextField, Typography, FormControlLabel, Checkbox
 } from "@material-ui/core";
 
 
@@ -55,7 +55,7 @@ class App extends Component {
       case 2:
         return this._renderStep2Form();
       case 3:
-        return this._renderNextButton();
+        return this._renderStep3Form();
       default:
         return null;
     }
@@ -217,6 +217,32 @@ class App extends Component {
               Select an additional damage area to  add  another repair
               to the damage report or click <b>Next</b> to continue.
             </Typography>
+          </Grid>
+          <Grid item sm={12}>
+            <Divider />
+            <br/>
+            {this._renderNextButton()}
+          </Grid>
+        </Grid>
+
+      </div>
+    );
+  }
+
+  _renderStep3Form() {
+
+    return (
+      <div style={{ width: '100%' }}>
+        <Grid container spacing={2} >
+          <Grid item sm={12} md={8}>
+            <h1> <Chip label="3" style={{fontSize: '.8em'}}/> Enter your information </h1>
+            <TextField label="Enter your name" fullWidth />
+            <TextField label="Enter your Email" fullWidth/>
+
+            <FormControlLabel
+                fullWidth
+                control={<Checkbox></Checkbox>}
+                label={<span>I read and accepted <a href='#'> terms & conditions.</a></span>} />
           </Grid>
           <Grid item sm={12}>
             <Divider />
