@@ -9,8 +9,9 @@ import {
   Grid, InputLabel,
   MenuItem,
   Paper,
-  Select,
-  TextField
+  Select, Slider,
+  TableContainer, Table, TableHead, TableRow, TableCell, TableBody,
+  TextField, Typography
 } from "@material-ui/core";
 
 
@@ -52,7 +53,7 @@ class App extends Component {
       case 1:
         return this._renderStep1Form();
       case 2:
-        return this._renderNextButton()
+        return this._renderStep2Form();
       case 3:
         return this._renderNextButton();
       default:
@@ -159,6 +160,73 @@ class App extends Component {
       </div>
     );
 
+  }
+
+  _renderStep2Form() {
+
+    return (
+      <div style={{ width: '100%' }}>
+        <Grid container spacing={4} >
+          <Grid item xs={12}>
+            <h1> <Chip label="3" style={{fontSize: '.8em'}}/> Document The Damage </h1>
+
+          </Grid>
+          <Grid item sm={12} md={4}>
+            <h3>(A) Select Damage Area</h3>
+            <img src="/images/car-regions.png" style={{ width: '100%' }} />
+          </Grid>
+
+          <Grid item sm={12} md={4}>
+            <h3>(B) Select Damage Level</h3>
+            <img src="/images/damage-sample.png" style={{ width: '100%' }}/>
+
+            <br/>
+            <Typography>
+              Roll over to view - click to select
+            </Typography>
+            <br/>
+            <Slider min={1} max={10} step={1} marks valueLabelDisplay="auto"/>
+          </Grid>
+          <Grid item sm={12} md={4}>
+            <h3>(C) Build Damage Report</h3>
+
+            <TableContainer component={Paper}>
+              <Table >
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Description</TableCell>
+                    <TableCell align="right">Level</TableCell>
+                    <TableCell align="right"> </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <TableRow >
+                    <TableCell component="th" scope="row">
+                        Hood
+                    </TableCell>
+                    <TableCell align="right">3</TableCell>
+                    <TableCell align="right"><Chip label="x" /> </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+
+            <br/>
+
+            <Typography >
+              Select an additional damage area to  add  another repair
+              to the damage report or click <b>Next</b> to continue.
+            </Typography>
+          </Grid>
+          <Grid item sm={12}>
+            <Divider />
+            <br/>
+            {this._renderNextButton()}
+          </Grid>
+        </Grid>
+
+      </div>
+    );
   }
 }
 
