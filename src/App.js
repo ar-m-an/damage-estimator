@@ -21,6 +21,12 @@ class App extends Component {
 
     this.state = {_activeStep: 0}
     this.incrementStep = this.incrementStep.bind(this);
+    this.decrementStep = this.decrementStep.bind(this);
+  }
+
+  decrementStep() {
+    const { _activeStep } = this.state;
+    this.setState({_activeStep: _activeStep - 1});
   }
 
   incrementStep() {
@@ -44,6 +50,12 @@ class App extends Component {
   _renderNextButton() {
     return (
         <Button variant="contained" color="primary" onClick={this.incrementStep}>Next</Button>
+    );
+  }
+
+  _renderBackButton() {
+    return (
+        <Button variant="contained" onClick={this.decrementStep} style={{ marginRight: '1em' }}>Back</Button>
     );
   }
   _renderStepForm(step) {
@@ -153,6 +165,7 @@ class App extends Component {
           <Grid item sm={12}>
             <Divider />
             <br/>
+            {this._renderBackButton()}
             {this._renderNextButton()}
           </Grid>
         </Grid>
@@ -221,6 +234,7 @@ class App extends Component {
           <Grid item sm={12}>
             <Divider />
             <br/>
+            {this._renderBackButton()}
             {this._renderNextButton()}
           </Grid>
         </Grid>
@@ -247,6 +261,7 @@ class App extends Component {
           <Grid item sm={12}>
             <Divider />
             <br/>
+            {this._renderBackButton()}
             {this._renderNextButton()}
           </Grid>
         </Grid>
