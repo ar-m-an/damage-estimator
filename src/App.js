@@ -1,6 +1,7 @@
 import React, { Component} from "react";
 import Steps from './components/Steps';
 import {
+  AppBar, Toolbar, IconButton,
   Button,
   Chip,
   Container,
@@ -13,6 +14,7 @@ import {
   TableContainer, Table, TableHead, TableRow, TableCell, TableBody,
   TextField, Typography, FormControlLabel, Checkbox
 } from "@material-ui/core";
+import MenuIcon from '@material-ui/icons/Menu';
 
 
 class App extends Component {
@@ -38,12 +40,33 @@ class App extends Component {
     const { _activeStep } = this.state;
 
     return (
-      <Container>
-        <Steps _activeStep={_activeStep}/>
+      <div>
+        {this._renderAppBar()}
+        <br/>
+        <Container>
+          <Steps _activeStep={_activeStep}/>
 
-        { this._renderStepForm(_activeStep) }
+          <Container>
+            { this._renderStepForm(_activeStep) }
+          </Container>
 
-      </Container>
+        </Container>
+      </div>
+    );
+  }
+
+  _renderAppBar() {
+    return (
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton edge="start"color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" color="inherit">
+            Vehicle Damage Estimator
+          </Typography>
+        </Toolbar>
+      </AppBar>
     );
   }
 
